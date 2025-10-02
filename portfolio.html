@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarvansh Dhiman - Python Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,133.3C960,128,1056,96,1152,90.7C1248,85,1344,107,1392,117.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+
+        .profile-img img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 5px solid wheat;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            animation: fadeInDown 1s;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header h2 {
+            font-size: 1.8em;
+            font-weight: 300;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px 24px;
+            border-radius: 30px;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .contact-info a:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .contact-info i {
+            font-size: 1.3em;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            display: block;
+            color: #667eea;
+            padding: 18px 30px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 600;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 80%;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            background: white;
+            margin: 30px 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 50px;
+            color: #1e3c72;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.2em;
+            line-height: 2;
+            color: #555;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 35px;
+            border-radius: 20px;
+            transition: all 0.4s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .skill-category h3 {
+            color: #1e3c72;
+            margin-bottom: 25px;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .skill-category h3 i {
+            font-size: 1.8em;
+            color: #667eea;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 12px 18px;
+            margin: 12px 0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .skill-item:hover {
+            transform: translateX(10px);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .skill-item i {
+            font-size: 1.5em;
+            color: #667eea;
+            width: 30px;
+        }
+
+        .skill-item:hover i {
+            color: white;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            margin-left: 30px;
+            margin-right: 30px;
+            border-left: 6px solid #667eea;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .experience-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .experience-item h3 {
+            color: #1e3c72;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .experience-item h3 i {
+            color: #667eea;
+        }
+
+        .experience-item .company {
+            color: #764ba2;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .experience-item .duration {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .experience-item .duration i {
+            color: #667eea;
+        }
+
+        .experience-item ul {
+            margin-left: 20px;
+        }
+
+        .experience-item li {
+            margin-bottom: 12px;
+            color: #555;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 35px;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 35px;
+            border-radius: 20px;
+            transition: all 0.4s;
+            border-top: 6px solid #667eea;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .project-card h3 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+            font-size: 1.6em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .project-card h3 i {
+            color: #667eea;
+        }
+
+        .project-card .tech-stack {
+            color: #764ba2;
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .project-card .tech-stack i {
+            color: #667eea;
+        }
+
+        .project-card .duration {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .project-card .duration i {
+            color: #667eea;
+        }
+
+        .project-card p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Education Section */
+        .education-item {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 35px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            margin-left: 30px;
+            margin-right: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .education-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .education-item h3 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .education-item h3 i {
+            color: #667eea;
+        }
+
+        .education-item .institution {
+            color: #764ba2;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .education-item .year {
+            color: #666;
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .education-item .year i {
+            color: #667eea;
+        }
+
+        /* Awards Section */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        .award-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .award-item:hover {
+            transform: scale(1.08) rotate(2deg);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .award-item i {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .award-item strong {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            header h2 {
+                font-size: 1.3em;
+            }
+
+            section h2 {
+                font-size: 2.2em;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li a {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="profile-img">
+                <img src="https://media.licdn.com/dms/image/v2/D5603AQEC8hGBiuHr7A/profile-displayphoto-shrink_800_800/B56ZZjqoerHAAg-/0/1745428842909?e=1762387200&v=beta&t=VvfJXOk3kh7V3s7R_v_7BsVCA_n82BheWdkC0gBRzHo" alt="Profile Photo" />
+            </div>
+            <h1>Sarvansh Dhiman</h1>
+            <h2>Python Full Stack Developer</h2>
+            <div class="contact-info">
+                <a href="tel:+918950160725">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+91-8950160725</span>
+                </a>
+                <a href="mailto:sarvansh1205@gmail.com">
+                    <i class="fas fa-envelope"></i>
+                    <span>sarvansh1205@gmail.com</span>
+                </a>
+                <a href="https://github.com/Sarvansh1205" target="_blank">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/sarvansh-dhiman-432769266" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#awards">Awards</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>Python Full Stack Developer skilled in building scalable web applications using Django and REST APIs with strong frontend expertise in JavaScript, React, HTML, CSS, and Bootstrap. Proficient in database design and management with MySQL and MongoDB. Adept at delivering user-focused solutions through efficient coding, debugging, and deployment practices.</p>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                    <div class="skill-item">
+                        <i class="fab fa-cuttlefish"></i>
+                        <span>C</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-cuttlefish"></i>
+                        <span>C++</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-python"></i>
+                        <span>Python</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-database"></i>
+                        <span>SQL</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-laptop-code"></i> Full Stack Development</h3>
+                    <div class="skill-item">
+                        <i class="fab fa-html5"></i>
+                        <span>HTML & CSS</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-js"></i>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-react"></i>
+                        <span>React.js</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-node-js"></i>
+                        <span>Node.js</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-server"></i>
+                        <span>Django</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-bootstrap"></i>
+                        <span>Bootstrap</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-plug"></i>
+                        <span>REST APIs</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Databases</h3>
+                    <div class="skill-item">
+                        <i class="fas fa-database"></i>
+                        <span>MySQL</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-leaf"></i>
+                        <span>MongoDB</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Tools & Methodologies</h3>
+                    <div class="skill-item">
+                        <i class="fas fa-code"></i>
+                        <span>VS Code</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-git-alt"></i>
+                        <span>Git & GitHub</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-database"></i>
+                        <span>MySQL Workbench</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-slack"></i>
+                        <span>Slack</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>Scrum & Agile</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="experience-item">
+                <h3><i class="fas fa-briefcase"></i> Python Developer (Internship)</h3>
+                <div class="company">Kidobotics Pvt. Ltd.</div>
+                <div class="duration">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>July 2025 – Present</span>
+                </div>
+                <ul>
+                    <li>Assisted in developing and maintaining backend services using Python and Django to support web applications</li>
+                    <li>Collaborated with the team to design and implement RESTful APIs for seamless communication between frontend and backend systems</li>
+                    <li>Worked closely with frontend developers to integrate user-facing elements with server-side logic</li>
+                    <li>Gained hands-on experience in version control using Git and contributed to code reviews and documentation</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3><i class="fas fa-utensils"></i> Food Scanner Application</h3>
+                    <div class="tech-stack">
+                        <i class="fas fa-layer-group"></i>
+                        <span>Django | React.js | Full Stack</span>
+                    </div>
+                    <div class="duration">
+                        <i class="far fa-calendar-alt"></i>
+                        <span>July 2025 – Present</span>
+                    </div>
+                    <p>Developed a full-stack food scanner application using Django for the backend API and React.js for the frontend interface, enabling users to scan food barcodes and retrieve detailed nutritional and ingredient information.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3><i class="fas fa-couch"></i> Interior Looks</h3>
+                    <div class="tech-stack">
+                        <i class="fas fa-layer-group"></i>
+                        <span>HTML | CSS | JavaScript</span>
+                    </div>
+                    <div class="duration">
+                        <i class="far fa-calendar-alt"></i>
+                        <span>July 2024 – September 2024</span>
+                    </div>
+                    <p>Designed a visually appealing and modern frontend interface using HTML, CSS, and JavaScript to showcase interior design concepts effectively.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3><i class="fas fa-boxes"></i> Inventory Management</h3>
+                    <div class="tech-stack">
+                        <i class="fas fa-layer-group"></i>
+                        <span>C++</span>
+                    </div>
+                    <div class="duration">
+                        <i class="far fa-calendar-alt"></i>
+                        <span>July 2023 – September 2023</span>
+                    </div>
+                    <p>Developed a console application for inventory management enabling users to add, update, delete, and view stock items with attributes like item code, name, quantity, and price.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3><i class="fas fa-graduation-cap"></i> Bachelor of Technology (Computer Science)</h3>
+                <div class="institution">Seth Jai Parkash Mukand Lal Institute of Engineering and Technology, Yamunanagar</div>
+                <div class="year">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2022 – 2026</span>
+                </div>
+            </div>
+            <div class="education-item">
+                <h3><i class="fas fa-school"></i> Senior Secondary Education</h3>
+                <div class="institution">Shivananda Parveen Public School, Yamunanagar</div>
+                <div class="year">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>2022</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="awards">
+            <h2>Awards & Leadership</h2>
+            <div class="awards-grid">
+                <div class="award-item">
+                    <i class="fas fa-user-tie"></i>
+                    <strong>Class Representative</strong>
+                    <p>Coordinated with faculty and managed academic queries</p>
+                </div>
+                <div class="award-item">
+                    <i class="fas fa-users"></i>
+                    <strong>Convener - Java Club</strong>
+                    <p>Lead a team of 35, organized coding events</p>
+                </div>
+                <div class="award-item">
+                    <i class="fas fa-palette"></i>
+                    <strong>Decoration Coordinator</strong>
+                    <p>College Annual Fest "ENCHANTÉ"</p>
+                </div>
+                <div class="award-item">
+                    <i class="fas fa-trophy"></i>
+                    <strong>1st Place</strong>
+                    <p>Management Games at TechFest 2023</p>
+                </div>
+                <div class="award-item">
+                    <i class="fas fa-medal"></i>
+                    <strong>2nd Position</strong>
+                    <p>Hindi Quiz Competition</p>
+                </div>
+                <div class="award-item">
+                    <i class="fas fa-medal"></i>
+                    <strong>2nd Position</strong>
+                    <p>Budding Leaders Competition</p>
+                </div>
+                <div class="award-item">
+                    <i class="fas fa-hands-helping"></i>
+                    <strong>Active Contributor</strong>
+                    <p>Blood March & Entrepreneurship Development Mela</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sarvansh Dhiman. All rights reserved.</p>
+            <p>Built with passion for web development</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Add active class to navigation on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(a => {
+                if (a.getAttribute('href').substring(1) === current) {
+                    a.style.color = '#764ba2';
+                } else {
+                    a.style.color = '#667eea';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
